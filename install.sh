@@ -82,7 +82,7 @@ fi
 #install necessary lib
 function apt_install(){
     apt-get -y update
-    apt-get -y install libpam0g-dev libssl-dev make gcc curl vim radiusclient1 pptpd openvpn
+    apt-get -y install libpam0g-dev libssl-dev make gcc curl vim radiusclient1 pptpd openvpn libgcrypt11 libgcrypt11-dev build-essential wget
 }
 
 # Get IP address of the server
@@ -490,18 +490,13 @@ novj
 novjccomp
 nologfd
 END
+}
 
-apt-get -y install wget || {
-  echo "Could not install wget, required to retrieve your IP address." 
-  exit 1
-}
-}
 #radius config
 #param $1 radius_server_ip $2 base_path $3 ip_server $4 radius_share_key
 function radius_config(){
 echo   "*****************************radius_config begin********************************"
 # openvpn radius 配置
-apt-get -y install libgcrypt11 libgcrypt11-dev build-essential
 mkdir /etc/radiusplugin
 cd /etc/radiusplugin/
 wget http://www.nongnu.org/radiusplugin/radiusplugin_v2.1a_beta1.tar.gz
@@ -538,6 +533,7 @@ service openvpn restart
 ipsec restart
 echo   "####################################radius_config end######################################"
 }
+
 function install_ovpn(){
 echo   "*****************************install_ovpn begin********************************"
 # Ensure to be root
