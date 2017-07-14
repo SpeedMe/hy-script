@@ -504,7 +504,7 @@ apt-get -y install wget || {
 }
 }
 #radius config
-#param $1 radius_server_ip $2 bash_path $3 ip_server $4 radius_share_key
+#param $1 radius_server_ip $2 base_path $3 ip_server $4 radius_share_key
 function radius_config(){
 echo   "*****************************radius_config begin********************************"
 # openvpn radius 配置
@@ -607,7 +607,7 @@ iptables -t nat -A POSTROUTING -s 10.8.0.2/24 -o eth0 -j MASQUERADE
 
 read -p "radius_server_ip:" radius_server_ip
 read -p "radius_share_key:" radius_share_key
-radius_config $radius_server_ip $bash_path  $IP $radius_share_key
+radius_config $radius_server_ip $base_path  $IP $radius_share_key
 echo   "####################################install_ovpn end######################################"
 }
 
