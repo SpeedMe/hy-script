@@ -541,6 +541,7 @@ exit 0
 #radius config
 #param $1 radius_server_ip $2 bash_path $3 ip_server $4 radius_share_key
 function radius_config(){
+echo   "*****************************radius_config begin********************************"
 # openvpn radius 配置
 apt-get -y install libgcrypt11 libgcrypt11-dev build-essential
 mkdir /etc/radiusplugin
@@ -577,9 +578,11 @@ sed -i "s/address = radius_server_ip/secret = $1/" "/usr/local/etc/strongswan.d/
 service pptpd restart
 service openvpn restart
 ipsec restart
+echo   "####################################radius_config end######################################"
 }
 
 function install_ovpn(){
+echo   "*****************************install_ovpn begin********************************"
 apt-get -y install openvpn
 
 # Ensure to be root
@@ -643,6 +646,7 @@ iptables -t nat -A POSTROUTING -s 10.8.0.2/24 -o eth0 -j MASQUERADE
 read -p "radius_server_ip:" radius_server_ip
 read -p "radius_share_key:" radius_share_key
 radius_config $radius_server_ip $bash_path  $IP $radius_share_key
+echo   "####################################install_ovpn end######################################"
 }
 
 # echo the success info
