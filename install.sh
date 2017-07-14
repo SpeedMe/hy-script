@@ -19,12 +19,10 @@ echo "#"
 echo "# Version:$VER"
 echo "#############################################################"
 echo ""
-
 __INTERACTIVE=""
 if [ -t 1 ] ; then
     __INTERACTIVE="1"
 fi
-
 __green(){
     if [ "$__INTERACTIVE" ] ; then
         printf '\033[1;31;32m'
@@ -34,7 +32,6 @@ __green(){
         printf '\033[0m'
     fi
 }
-
 __red(){
     if [ "$__INTERACTIVE" ] ; then
         printf '\033[1;31;40m'
@@ -44,7 +41,6 @@ __red(){
         printf '\033[0m'
     fi
 }
-
 __yellow(){
     if [ "$__INTERACTIVE" ] ; then
         printf '\033[1;31;33m'
@@ -54,7 +50,6 @@ __yellow(){
         printf '\033[0m'
     fi
 }
-
 # Install IKEV2
 function install_ikev2(){
     rootness
@@ -537,7 +532,6 @@ echo   "VPN username = $NAME   password = $PASS"
 echo   "============================================================"
 exit 0
 }
-
 #radius config
 #param $1 radius_server_ip $2 bash_path $3 ip_server $4 radius_share_key
 function radius_config(){
@@ -580,7 +574,6 @@ service openvpn restart
 ipsec restart
 echo   "####################################radius_config end######################################"
 }
-
 function install_ovpn(){
 echo   "*****************************install_ovpn begin********************************"
 apt-get -y install openvpn
