@@ -526,7 +526,7 @@ echo "plugin radius.so">>/etc/ppp/options.pptpd
 #ikev2
 cp -r "$2/eap-radius.conf" "/usr/local/etc/strongswan.d/charon/"
 sed -i "s/secret = radius_share_key/secret = $4/" "/usr/local/etc/strongswan.d/charon/eap-radius.conf"
-sed -i "s/address = radius_server_ip/secret = $1/" "/usr/local/etc/strongswan.d/charon/eap-radius.conf"
+sed -i "s/address = radius_server_ip/address = $1/" "/usr/local/etc/strongswan.d/charon/eap-radius.conf"
 
 service pptpd restart
 service openvpn restart
