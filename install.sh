@@ -89,7 +89,7 @@ fi
 #install necessary lib
 function apt_install(){
     apt-get -y update
-    apt-get -y install libpam0g-dev libssl-dev make gcc curl
+    apt-get -y install libpam0g-dev libssl-dev make gcc curl vim radiusclient1 pptpd openvpn
 }
 
 # Get IP address of the server
@@ -103,14 +103,6 @@ function get_my_ip(){
 
 # Pre-installation settings
 function pre_install(){
-    echo "#############################################################"
-    echo "# Install IKEV2 VPN for CentOS6.x/7 (32bit/64bit) or Ubuntu or Debian7/8.*"
-    echo "# Intro: https://quericy.me/blog/699"
-    echo "#"
-    echo "# Author:quericy"
-    echo "#"
-    echo "# Version:$VER"
-    echo "#############################################################"
     echo "your VPS is Xen、KVM"
     os="1"
     os_str="Xen、KVM"
@@ -441,11 +433,6 @@ then
   exit 0
 fi
 
-apt-get -y install radiusclient1 pptpd || {
-  echo "Could not install pptpd" 
-  exit 1
-}
-
 #ubuntu has exit 0 at the end of the file.
 sed -i '/^exit 0/d' /etc/rc.local
 
@@ -560,8 +547,6 @@ echo   "####################################radius_config end###################
 }
 function install_ovpn(){
 echo   "*****************************install_ovpn begin********************************"
-apt-get -y install openvpn
-
 # Ensure to be root
 if [ "$EUID" -ne 0 ]; then
   echo "Please run as root"
