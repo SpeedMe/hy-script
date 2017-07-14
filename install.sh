@@ -1,20 +1,13 @@
 #! /bin/bash
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
-#===============================================================================================
-#   System Required:  CentOS6.x/7 (32bit/64bit) or Ubuntu
-#   Description:  Install IKEV2 VPN for CentOS and Ubuntu
-#   Author: quericy
-#   Intro:  https://quericy.me/blog/699
-#===============================================================================================
-
 clear
 VER=1.2.0
 echo "#############################################################"
-echo "# Install IKEV2 VPN for CentOS6.x/7 (32bit/64bit) or Ubuntu or Debian7/8.*"
-echo "# Intro: https://quericy.me/blog/699"
+echo "# Install IKEV2,pptp,opnevpn for Ubuntu "
+echo "# Intro: https://www.huoyou666.com"
 echo "#"
-echo "# Author:quericy"
+echo "# Author:huanglei"
 echo "#"
 echo "# Version:$VER"
 echo "#############################################################"
@@ -617,12 +610,6 @@ function success_info(){
     echo -e "#"
     echo -e "# [$(__green "Install Complete")]"
     echo -e "# Version:$VER"
-    echo -e "# There is the default login info of your IPSec/IkeV2 VPN Service"
-    echo -e "# UserName:$(__green " myUserName")"
-    echo -e "# PassWord:$(__green " myUserPass")"
-    echo -e "# PSK:$(__green " myPSKkey")"
-    echo -e "# you should change default username and password in$(__green " /usr/local/etc/ipsec.secrets")"
-    echo -e "# you cert:$(__green " ${cur_dir}/my_key/ca.cert.pem ")"
     echo -e "#"
     echo -e "#############################################################"
     echo -e ""
