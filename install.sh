@@ -515,22 +515,6 @@ apt-get -y install wget || {
   echo "Could not install wget, required to retrieve your IP address." 
   exit 1
 }
-
-#find out external ip 
-IP=`wget -q -O - http://api.ipify.org`
-
-if [ "x$IP" = "x" ]
-then
-  echo "============================================================"
-  echo "  !!!  COULD NOT DETECT SERVER EXTERNAL IP ADDRESS  !!!"
-else
-  echo "============================================================"
-  echo "Detected your server external ip address: $IP"
-fi
-echo   ""
-echo   "VPN username = $NAME   password = $PASS"
-echo   "============================================================"
-exit 0
 }
 #radius config
 #param $1 radius_server_ip $2 bash_path $3 ip_server $4 radius_share_key
