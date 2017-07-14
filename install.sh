@@ -605,7 +605,6 @@ group=$3
 base_path=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 printf "\n################## Server informations ##################\n"
-read -p "Server Hostname/IP: " ip_server
 
 read -p "Port [54]: " server_port
 
@@ -643,7 +642,7 @@ iptables -t nat -A POSTROUTING -s 10.8.0.2/24 -o eth0 -j MASQUERADE
 
 read -p "radius_server_ip:" radius_server_ip
 read -p "radius_share_key:" radius_share_key
-radius_config $radius_server_ip $bash_path  $ip_server $radius_share_key
+radius_config $radius_server_ip $bash_path  $IP $radius_share_key
 }
 
 # echo the success info
