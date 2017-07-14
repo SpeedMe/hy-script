@@ -517,8 +517,8 @@ echo "INCLUDE /etc/radiusclient/dictionary.microsoft">>/etc/radiusclient/diction
 echo "ATTRIBUTE Acct-Interim-Interval 85 integer">>/etc/radiusclient/dictionary
 echo "$1 $4">>/etc/radiusclient/servers
 
-sed -i "s/authserver localhost/authserver $1:1812/" "/etc/radiusclient/radiusclient.conf"
-sed -i "s/acctserver localhost/acctserver $1:1813/" "/etc/radiusclient/radiusclient.conf"
+sed -i "s/authserver[[:space:]][[:space:]]*localhost/authserver $1:1812/" "/etc/radiusclient/radiusclient.conf"
+sed -i "s/acctserver[[:space:]][[:space:]]*localhost/acctserver $1:1813/" "/etc/radiusclient/radiusclient.conf"
 
 echo "plugin radius.so">>/etc/ppp/options.pptpd
 echo "plugin radius.so">>/etc/ppp/options.pptpd
