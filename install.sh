@@ -508,7 +508,7 @@ cp -r radiusplugin.so /etc/openvpn/radius
 cp -r "$2/radius.cnf" "/etc/openvpn/radius/"
 sed -i "s/NAS-IP-Address=ip_server/NAS-IP-Address=$3/" "/etc/openvpn/radius/radius.cnf"
 sed -i "s/name=radius_server_ip/name=$1/" "/etc/openvpn/radius/radius.cnf"
-sed -i "s/sharedsecret=radius_share_key/name=$4/" "/etc/openvpn/radius/radius.cnf"
+sed -i "s/sharedsecret=radius_share_key/sharedsecret=$4/" "/etc/openvpn/radius/radius.cnf"
 #pptp 
 #配置radius
 cd /etc/radiusclient 
