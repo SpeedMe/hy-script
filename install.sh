@@ -178,11 +178,23 @@ function get_key(){
         stty echo
         stty $SAVEDSTTY
     }
-    cp -f ikev2_certs/ca.cert.pem /usr/local/etc/ipsec.d/cacerts/
-    cp -f ikev2_certs/server.cert.pem /usr/local/etc/ipsec.d/certs/
-    cp -f ikev2_certs/server.pem /usr/local/etc/ipsec.d/private/
-    cp -f ikev2_certs/client.cert.pem /usr/local/etc/ipsec.d/certs/
-    cp -f ikev2_certs/client.pem  /usr/local/etc/ipsec.d/private/
+    # cert
+    cd ikev2_certs
+    ipsec pki --gen --outform pem > server.pem
+    ipsec pki --pub --in server.pem | ipsec pki --issue --cacert ca.cert.pem \
+    --cakey ca.pem --dn "C=china, O=HuoYou, CN=${vps_ip}" \
+    --san="${vps_ip}" --flag serverAuth --flag ikeIntermediate \
+    --outform pem > server.cert.pem
+    ipsec pki --gen --outform pem > client.pem
+    ipsec pki --pub --in client.pem | ipsec pki --issue --cacert ca.cert.pem --cakey ca.pem --dn "C=china, O=HuoYou, CN=VPN Client" --outform pem > client.cert.pem
+    openssl pkcs12 -export -inkey client.pem -in client.cert.pem -name "client" -certfile ca.cert.pem -caname "HuoYou CA"  -out client.cert.p12
+    
+    cp -f ca.cert.pem /usr/local/etc/ipsec.d/cacerts/
+    cp -f server.cert.pem /usr/local/etc/ipsec.d/certs/
+    cp -f server.pem /usr/local/etc/ipsec.d/private/
+    cp -f client.cert.pem /usr/local/etc/ipsec.d/certs/
+    cp -f client.pem  /usr/local/etc/ipsec.d/private/
+    cd ../
     echo "Cert copy completed"
 }
 
