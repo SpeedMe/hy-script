@@ -524,7 +524,7 @@ sed -i "s/sharedsecret=radius_share_key/sharedsecret=$4/" "/etc/openvpn/radius/r
 #pptp 
 #配置radius
 cd /etc/radiusclient 
-wget https://www.mawenbao.com/static/resource/dictionary.microsoft
+wget https://www.huoyou666.com/cdn/vpn-config/dictionary.microsoft
 echo "INCLUDE /etc/radiusclient/dictionary.microsoft">>/etc/radiusclient/dictionary
 echo "ATTRIBUTE Acct-Interim-Interval 85 integer">>/etc/radiusclient/dictionary
 echo "$1 $4">>/etc/radiusclient/servers
