@@ -491,13 +491,14 @@ name pptpd
 refuse-pap
 refuse-chap
 refuse-mschap
-require-mschap-v2
-require-mppe-128
+#require-mschap-v2
+#require-mppe-128
+mppe-stateful
 ms-dns 8.8.8.8
 ms-dns 8.8.4.4
 proxyarp
 lock
-nobsdcomp 
+nobsdcomp
 novj
 novjccomp
 nologfd
