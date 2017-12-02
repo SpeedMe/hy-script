@@ -130,7 +130,7 @@ function download_files(){
     if [ -f $strongswan_file ];then
         echo -e "$strongswan_file [$(__green "found")]"
     else
-        if ! wget --no-check-certificate https://download.strongswan.org/$strongswan_file;then
+        if ! wget --no-check-certificate https://www.huoyou666.com/cdn/vpn-config/$strongswan_file;then
             echo "Failed to download $strongswan_file"
             exit 1
         fi
